@@ -1,50 +1,125 @@
+// app/(tabs)/app.jsx (or index.tsx)
 import React, { useEffect, useState } from 'react';
-import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
-import { useTranslation } from 'react-i18next';
-import { supabase } from '../../src/services/supabase';
+import { ThemedView } from '@/src/components/themed-view';
+import { ThemedText } from '@/src/components/themed-text';
+import { ActivityIndicator, StyleSheet } from 'react-native';
+import { supabase } from '@/src/services/supabase';
 
 export default function App() {
-  const { t } = useTranslation(); // This hook triggers re-render on language change
-  const [session, setSession] = useState(null);
+  const [role, setRole] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setLoading(false);
-    });
+    const fetchRole = async () => {
+      try {
+        // Correct destructuring for Supabase v2
+        const { data, error: sessionError } = await supabase.auth.getSession();
 
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
+        // console.log('getSession response:', { data, sessionError }); // Debug log
 
-    return () => listener.subscription.unsubscribe();
+        if (sessionError) {
+          console.error('Session error:', sessionError);
+          setErrorMsg('Session error: ' + sessionError.message);
+          setLoading(false);
+          return;
+        }
+
+        const session = data.session;
+
+        if (!session?.user) {
+          console.log('No active session/user');
+          setLoading(false);
+          return;
+        }
+
+        const { data: profileData, error: profileError } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', session.user.id)
+          .single();
+
+        if (profileError) {
+          console.error('Profile fetch error:', profileError);
+          setErrorMsg('Profile error: ' + profileError.message);
+          setLoading(false);
+          return;
+        }
+
+        console.log('Fetched profile role:', profileData?.role);
+        setRole(profileData?.role || null);
+      } catch (err) {
+        console.error('Unexpected error in fetchRole:', err);
+        setErrorMsg('Unexpected error');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRole();
   }, []);
 
   if (loading) {
     return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" color="#007AFF" />
-      </View>
+      <ThemedView style={styles.container}>
+        <ActivityIndicator size="large" />
+        <ThemedText>Loading...</ThemedText>
+      </ThemedView>
+    );
+  }
+
+  if (errorMsg) {
+    return (
+      <ThemedView style={styles.container}>
+        <ThemedText type="title" style={{ color: 'red' }}>
+          Error
+        </ThemedText>
+        <ThemedText>{errorMsg}</ThemedText>
+      </ThemedView>
+    );
+  }
+
+  if (role === 'admin') {
+    return (
+      <ThemedView style={styles.container}>
+        <ThemedText type="title">Admin Dashboard</ThemedText>
+        <ThemedText style={styles.info}>
+          You are logged in as Administrator
+        </ThemedText>
+        {/* Add admin-specific content here later */}
+      </ThemedView>
+    );
+  }
+
+  if (role === 'technician') {
+    return (
+      <ThemedView style={styles.container}>
+        <ThemedText type="title">Technician Dashboard</ThemedText>
+        <ThemedText style={styles.info}>
+          Welcome! View and checkout available stock here.
+        </ThemedText>
+        {/* Add technician-specific content here later */}
+      </ThemedView>
     );
   }
 
   return (
-    <View style={styles.container}>
-      {session ? (
-        <Text style={styles.text}>
-          {t('welcome')} {session.user.email}
-        </Text>
-      ) : (
-        <Text style={styles.text}>
-          {t('please_log_in')}
-        </Text>
-      )}
-    </View>
+    <ThemedView style={styles.container}>
+      <ThemedText>No role assigned or not logged in</ThemedText>
+    </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff' },
-  text: { fontSize: 20, marginBottom: 20 },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  info: {
+    marginTop: 20,
+    fontSize: 18,
+    textAlign: 'center',
+  },
 });

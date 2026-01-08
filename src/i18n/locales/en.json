@@ -4,5 +4,19 @@
   "stock_items": "Stock Items",
   "checkout": "Checkout",
   "explore": "Explore",
-  "This_app_includes_example_code_to_help_you_get_started.": "This app includes example code to help you get started."
+  "This_app_includes_example_code_to_help_you_get_started.": "This app includes example code to help you get started.",
+  "login": {
+    "title": "StockTrack Pro",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "loginButton": "Login",
+    "loading": "Logging in...",
+    "error": {
+      "invalid": "Invalid email or password",
+      "network": "Network error. Please try again.",
+      "generic": "Something went wrong. Please try again."
+    }
+  }
 }

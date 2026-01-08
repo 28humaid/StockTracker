@@ -4,5 +4,19 @@
   "stock_items": "स्टॉक आइटम्स",
   "checkout": "चेकआउट",
   "explore": "अन्वेषण",
-  "This_app_includes_example_code_to_help_you_get_started.": "इस ऐप में आपको शुरू करने में मदद के लिए उदाहरण कोड शामिल है।"
+  "This_app_includes_example_code_to_help_you_get_started.": "इस ऐप में आपको शुरू करने में मदद के लिए उदाहरण कोड शामिल है।",
+  "login": {
+    "title": "स्टॉकट्रैक प्रो",
+    "email": "ईमेल",
+    "emailPlaceholder": "अपना ईमेल डालें",
+    "password": "पासवर्ड",
+    "passwordPlaceholder": "अपना पासवर्ड डालें",
+    "loginButton": "लॉगिन करें  ",
+    "loading": "लॉगिन हो रहा है...",
+    "error": {
+      "invalid": "गलत ईमेल या पासवर्ड",
+      "network": "नेटवर्क एरर. दोबारा ट्राई करें।",
+      "generic": "कुछ गलत हुआ। कृपया दोबारा ट्राई करें।"
+    }
+  }
 }
