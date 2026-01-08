@@ -43,12 +43,12 @@ export default {
         },
       ],
       'expo-barcode-scanner',
+      'expo-localization',
     ],
     experiments: {
       typedRoutes: true,
       reactCompiler: true,
     },
-    // THIS IS THE IMPORTANT PART — exposes env variables to the app
     extra: {
       PROJECT_URL: process.env.PROJECT_URL,
       KEY: process.env.KEY,

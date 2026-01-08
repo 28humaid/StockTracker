@@ -1,28 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
-import i18n from '../../src/i18n/i18n';
-import LanguageToggle from '../../src/components/LanguageToggle';
+import { useTranslation } from 'react-i18next';
 import { supabase } from '../../src/services/supabase';
 
 export default function App() {
+  const { t } = useTranslation(); // This hook triggers re-render on language change
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check for existing persistent session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setLoading(false);
     });
 
-    // Listen for auth changes (login/logout)
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
 
-    return () => {
-      listener.subscription.unsubscribe();
-    };
+    return () => listener.subscription.unsubscribe();
   }, []);
 
   if (loading) {
@@ -37,14 +33,13 @@ export default function App() {
     <View style={styles.container}>
       {session ? (
         <Text style={styles.text}>
-          {i18n.t('welcome') || 'Welcome'} {session.user.email}
+          {t('welcome')} {session.user.email}
         </Text>
       ) : (
         <Text style={styles.text}>
-          {i18n.t('login') || 'Please log in'}
+          {t('please_log_in')}
         </Text>
       )}
-      <LanguageToggle />
     </View>
   );
 }

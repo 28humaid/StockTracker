@@ -8,8 +8,11 @@ import { ThemedText } from '@/src/components/themed-text';
 import { ThemedView } from '@/src/components/themed-view';
 import { IconSymbol } from '@/src/components/ui/icon-symbol';
 import { Fonts } from '@/src/constants/theme';
+import { useTranslation } from 'react-i18next';
 
 export default function TabTwoScreen() {
+  const { t } = useTranslation();
+  
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
@@ -27,10 +30,10 @@ export default function TabTwoScreen() {
           style={{
             fontFamily: Fonts.rounded,
           }}>
-          Explore
+          {t('explore')}
         </ThemedText>
       </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
+      <ThemedText>{t('This_app_includes_example_code_to_help_you_get_started.')}</ThemedText>
       <Collapsible title="File-based routing">
         <ThemedText>
           This app has two screens:{' '}
