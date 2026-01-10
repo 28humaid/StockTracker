@@ -1,10 +1,39 @@
 {
-  "welcome": "Welcome",
+  
   "please_log_in": "Please log in",
   "stock_items": "Stock Items",
   "checkout": "Checkout",
   "explore": "Explore",
   "This_app_includes_example_code_to_help_you_get_started.": "This app includes example code to help you get started.",
+
+  "common": {
+    "welcome": "Welcome",
+    "loading": "Loading...",
+    "error": "Error",
+    "unexpectedError": "Something went wrong",
+    "guest": "User",
+    "welcomeUser": "Welcome {name}!",            
+    "ok": "OK",
+    "success": "Success",
+    "fullName": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "enterFullName": "Enter full name",
+    "enterPassword": "Enter password",
+    "home": "Home",
+    "menu": "Menu",
+    "logout": "Logout",
+    "confirmLogout": "Confirm Logout",
+    "logoutMessage": "Are you sure you want to logout?",
+    "yes": "Yes",
+    "no": "No",
+    "back": "Back",
+    "create": "Create",
+    "createAdmin": "Create Admin",
+    "createTechnician": "Create Technician",
+    "passwordInstruction": "Must be at least 5 characters long"
+  },
+
   "login": {
     "title": "StockTrack Pro",
     "email": "Email",
@@ -19,30 +48,58 @@
       "generic": "Something went wrong. Please try again."
     }
   },
-  "common": {
-    "home": "Home",
-    "menu": "Menu",
-    "logout": "Logout",
-    "confirmLogout": "Confirm Logout",
-    "logoutMessage": "Are you sure you want to logout?",
-    "yes": "Yes",
-    "no": "No",
-    "back": "Back"
+
+  "roles": {                                    
+    "admin": "Admin",
+    "technician": "Technician"
   },
+
+  "dashboard": {                                
+    "admin": {
+      "title": "Admin Dashboard",
+      "welcomeMessage": "You can manage items, clients, technicians and view all reports."
+    },
+    "technician": {
+      "title": "Technician Dashboard",
+      "welcomeMessage": "You can view available stock, checkout items & mark installations."
+    }
+  },
+
+  "admin": {
+    "userManagement": {
+      "title": "Manage Users"
+    },
+    "createUser": {
+      "title": {
+        "admin": "Create New Admin",
+        "technician": "Create New Technician"
+      },
+      "warning": {
+        "admin": "Warning: This is a powerful action! Only create admins you fully trust."
+      },
+      "confirmAdmin": "I am sure I want to create this user as Admin",
+      "success": "User created successfully",
+      "credentials": "Login credentials",
+      "error": "Failed to create user. Please try again."
+    }
+  },
+
   "menu": {
-    "addUser": "Add User ",
+    "addUser": "Add User  ",
     "addItems": "Add Items",
     "viewUsers": "View Users",
     "viewItems": "View Items",
     "pickItems": "Pick Items",
     "installItems": "Install Items"
   },
-  "screens": {
-    "addTechnician": "Add Technician",
-    "addItems": "Add Items",
-    "viewTechnicians": "View Technicians",
-    "viewItems": "View Items",
-    "pickItems": "Pick Items",
-    "installItems": "Install Items"
+
+  "profile": {                                  
+    "notFound": "Profile not found",
+    "noRoleAssigned": "No role assigned yet"
+  },
+
+  "auth": {             
+    "noActiveSession": "No active login session",
+    "loggedInAs": "You are logged in as"
   }
 }
