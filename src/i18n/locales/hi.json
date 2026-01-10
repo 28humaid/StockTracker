@@ -18,5 +18,31 @@
       "network": "नेटवर्क एरर. दोबारा ट्राई करें।",
       "generic": "कुछ गलत हुआ। कृपया दोबारा ट्राई करें।"
     }
+  },
+  "common": {
+    "home": "होम",
+    "menu": "मेनू",
+    "logout": "लॉगआउट",
+    "confirmLogout": "लॉगआउट की पुष्टि करें   ",
+    "logoutMessage": "क्या आप वाकई लॉगआउट करना चाहते हैं?",
+    "yes": "हाँ",
+    "no": "नहीं",
+    "back": "वापस "
+  },
+  "menu": {
+    "addUser": "यूज़र जोड़ें  ",
+    "addItems": "आइटम जोड़ें  ",
+    "viewUsers": "यूज़र देखें  ",
+    "viewItems": "आइटम देखें  ",
+    "pickItems": "आइटम चुनें",
+    "installItems": "आइटम इंस्टॉल करें"
+  },
+  "screens": {
+    "addTechnician": "टेक्निशियन जोड़ें",
+    "addItems": "आइटम जोड़ें",
+    "viewTechnicians": "टेक्निशियन देखें",
+    "viewItems": "आइटम देखें",
+    "pickItems": "आइटम चुनें",
+    "installItems": "आइटम इंस्टॉल करें"
   }
 }

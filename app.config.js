@@ -50,8 +50,8 @@ export default {
       reactCompiler: true,
     },
     extra: {
-      PROJECT_URL: process.env.PROJECT_URL,
-      KEY: process.env.KEY,
+      supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL,
+      supabaseAnonKey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY,
     },
   },
 };

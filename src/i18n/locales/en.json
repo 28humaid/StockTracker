@@ -18,5 +18,31 @@
       "network": "Network error. Please try again.",
       "generic": "Something went wrong. Please try again."
     }
+  },
+  "common": {
+    "home": "Home",
+    "menu": "Menu",
+    "logout": "Logout",
+    "confirmLogout": "Confirm Logout",
+    "logoutMessage": "Are you sure you want to logout?",
+    "yes": "Yes",
+    "no": "No",
+    "back": "Back"
+  },
+  "menu": {
+    "addUser": "Add User ",
+    "addItems": "Add Items",
+    "viewUsers": "View Users",
+    "viewItems": "View Items",
+    "pickItems": "Pick Items",
+    "installItems": "Install Items"
+  },
+  "screens": {
+    "addTechnician": "Add Technician",
+    "addItems": "Add Items",
+    "viewTechnicians": "View Technicians",
+    "viewItems": "View Items",
+    "pickItems": "Pick Items",
+    "installItems": "Install Items"
   }
 }

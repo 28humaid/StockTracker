@@ -39,7 +39,7 @@ export default function RootLayout() {
     );
 
     supabase.auth.getSession().then(({ data, error }) => {
-  // console.log('Layout getSession:', { data, error });
+  console.log('Layout getSession:', { data, error });
 
   if (error) {
     console.error('Layout session error:', error);

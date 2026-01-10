@@ -36,21 +36,13 @@ export default function LoginScreen() {
   }, []);
 
   const checkSession = async () => {
-    // Correct destructuring for Supabase v2
-    const { data, error: sessionError } = await supabase.auth.getSession();
+  const { data, error: sessionError } = await supabase.auth.getSession();
 
-    console.log('Login getSession response:', { data, sessionError }); // Debug log
+  if (sessionError || !data.session?.user) {
+    return;
+  }
 
-    if (sessionError) {
-      console.error('Session error in login:', sessionError);
-      return;
-    }
-
-    const session = data.session;
-
-    if (session?.user) {
-      await handleSuccessfulLogin(session.user.id);
-    }
+  await handleSuccessfulLogin(data.session.user.id);
   };
 
   const handleLogin = async () => {
@@ -68,9 +60,9 @@ export default function LoginScreen() {
     setLoading(false);
 
     if (error) {
-      console.error('Supabase login error:', error); // Improved logging
-      console.log('Error message:', error.message);
-      console.log('Error status:', error.status);
+      // console.error('Supabase login error:', error);
+      // console.log('Error message:', error.message);
+      // console.log('Error status:', error.status);
       let message = t('login.error.generic');
       if (error.message.includes('Invalid login credentials')) {
         message = t('login.error.invalid');
@@ -106,12 +98,7 @@ export default function LoginScreen() {
       await supabase.auth.signOut();
       return;
     }
-
-    if (profile.role === 'admin') {
-      router.replace('/(tabs)/admin');
-    } else {
-      router.replace('/(tabs)/technician');
-    }
+    router.replace('/(tabs)/');
   };
 
   const toggleShowPassword = () => setShowPassword(!showPassword);

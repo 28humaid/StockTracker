@@ -5,7 +5,7 @@ import { ThemedText } from '@/src/components/themed-text';
 import { ActivityIndicator, StyleSheet } from 'react-native';
 import { supabase } from '@/src/services/supabase';
 
-export default function App() {
+export default function HomeScreen() {
   const [role, setRole] = useState(null);
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
